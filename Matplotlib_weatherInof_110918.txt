@@ -1,0 +1,110 @@
+# 1. Import libraries and modules
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.externals import joblib 
+from sklearn import linear_model
+# we are using below lib in this example
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+# 1. read the Temperature file based on dayes get the weather information
+df = pd.read_csv('E:/OUTOKUMPU/ML/Matplotlib_weatherInof_110918.csv')
+
+df
+
+#x=[1,2,3,4,5,6,7,8,9,10]
+#y=[40,44,43,50,48,42,46,40,44,39]
+# Define the Day column values to x var
+x=df['Day']
+# Define the Temp column values to y var
+y=df['Temp']
+
+
+# 2.
+# On X axis Days
+plt.xlabel('day')
+# On Y axis Tempearture
+plt.ylabel('Temp')
+# Title 'WEATHER'
+plt.title('Weather')
+# show the plot digaram
+plt.plot(x,y, color='green',linewidth=5,linestyle='dotted')
+==================
+
+# 3. #pyplot.plot format strings and other options
+
+# On X axis Days
+plt.xlabel('day')
+# On Y axis Tempearture
+plt.ylabel('Temp')
+# Title 'WEATHER'
+plt.title('Weather')
+# The plot string we can use for color- r=red,b=blue,g=green
+plt.plot(x,y, 'r+--')
+
+
+# Same effect as 'b+' format string
+plt.plot(x,y,color='blue',marker='+',linestyle='-')
+
+# Same effect as 'b+' format string
+plt.plot(x,y,color='blue',marker='+',linestyle='')# changed the linestyle
+
+# Same effect as 'b+' format string
+plt.plot(x,y,color='blue',marker='+',linestyle='', markersize=20)# Marker size
+
+plt.plot(x,y,'r^',alpha=0.8) # alpha can be specified on a scale 0 to 1
+
+
+# 4. #Axes Labels, Legend, Grid
+Max_T=[50,53,49,47,50,55,48,45,44,46]
+Min_T=[40,43,45,41,42,44,32,33,35,39]
+Avg_T=[48,40,42,47,42,44,42,44,41,50]
+
+
+plt.plot(x,Max_T, label="Max")
+plt.plot(x,Min_T, label="Min")
+plt.plot(x,Avg_T, label="Avg")
+plt.xlabel('Day')
+plt.ylabel('Temp')
+plt.title('Weather')
+
+
+# Lenged
+plt.plot(x,Max_T, label="Max")
+plt.plot(x,Min_T, label="Min")
+plt.plot(x,Avg_T, label="Avg")
+plt.xlabel('Day')
+plt.ylabel('Temp')
+plt.title('Weather')
+
+# show the lenged
+plt.legend(loc='best')
+
+# Lenged
+plt.plot(x,Max_T, label="Max")
+plt.plot(x,Min_T, label="Min")
+plt.plot(x,Avg_T, label="Avg")
+plt.xlabel('Day')
+plt.ylabel('Temp')
+plt.title('Weather')
+
+# show the lenged location in upper side and large font size
+plt.legend(loc='upper right',shadow=True,fontsize='large')
+#plt.legend(shadow=True,fontsize='large')
+
+
+# Lenged
+plt.plot(x,Max_T, label="Max")
+plt.plot(x,Min_T, label="Min")
+plt.plot(x,Avg_T, label="Avg")
+plt.xlabel('Day')
+plt.ylabel('Temp')
+plt.title('Weather')
+
+plt.legend(loc='upper right',fontsize='large',shadow=True)
